@@ -531,7 +531,9 @@ PORTFOLIO_PAGE = """<!doctype html>
           <div class="pipeline-arrow">&darr;</div>
           <div class="pipeline-step"><span class="step-label">03</span>Deploys over SSH to an Oracle Cloud ARM VM, installs dependencies in a fresh virtualenv</div>
           <div class="pipeline-arrow">&darr;</div>
-          <div class="pipeline-step"><span class="step-label">04</span>systemd restarts the app; nginx reverse-proxies it on port 80</div>
+          <div class="pipeline-step"><span class="step-label">04</span>systemd restarts the app; nginx reverse-proxies it and terminates TLS</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">05</span>Let&rsquo;s Encrypt certificate, auto-renewed by certbot</div>
         </div>
         <div class="pipeline-note">My own SSH and RDP access to the VM goes over Tailscale. GitHub's runners deploy straight over the public IP.</div>
       </div>
