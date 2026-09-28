@@ -269,6 +269,33 @@ PORTFOLIO_PAGE = """<!doctype html>
     }
     .now strong { color: var(--ink); font-weight: 500; }
 
+    .pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .pipeline-step {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 0.7rem 0.9rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+    .step-label { color: var(--brass); margin-right: 0.6rem; }
+    .pipeline-arrow {
+      text-align: center;
+      color: var(--dim);
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+    .pipeline-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--dim);
+    }
+
     .elev {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -489,10 +516,24 @@ PORTFOLIO_PAGE = """<!doctype html>
 
     <section id="systems">
       <h2>Also on this server</h2>
-      <p>This site's own host &mdash; an Oracle Cloud VM &mdash; reports its live vitals on a status page I built and deploy automatically through GitHub Actions on every push.</p>
+      <p>This site's own host, an Oracle Cloud VM, reports its live vitals on a status page I built and deploy automatically through GitHub Actions on every push.</p>
       <div class="contact-links">
         <a href="/status">See the live dashboard</a>
         <a href="https://github.com/iamnabid/vm-status-app">Source on GitHub</a>
+      </div>
+
+      <div class="elev">
+        <div class="elev-caption">How this site runs</div>
+        <div class="pipeline">
+          <div class="pipeline-step"><span class="step-label">01</span>git push to main</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">02</span>GitHub Actions checks out the code</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">03</span>Deploys over SSH to an Oracle Cloud ARM VM, installs dependencies in a fresh virtualenv</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">04</span>systemd restarts the app; nginx reverse-proxies it on port 80</div>
+        </div>
+        <div class="pipeline-note">My own SSH and RDP access to the VM goes over Tailscale. GitHub's runners deploy straight over the public IP.</div>
       </div>
     </section>
 
