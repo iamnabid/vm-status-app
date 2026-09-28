@@ -401,6 +401,7 @@ PORTFOLIO_PAGE = """<!doctype html>
       <a href="#about">About</a>
       <a href="#thesis">Thesis</a>
       <a href="#field">Field work</a>
+      <a href="#systems">Systems</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
       <a href="/status">Live status</a>
@@ -408,7 +409,7 @@ PORTFOLIO_PAGE = """<!doctype html>
 
     <h1>Nabid Sheikh</h1>
     <div class="role">Environmental engineering student, CZU Prague</div>
-    <p class="lede">I study how snow cover across Czech mountain ranges has changed over the last 24 years, combining satellite records with fieldwork in Iceland and the Krkonoše mountains.</p>
+    <p class="lede">I dig into how systems behave. Right now that's 24 years of Czech mountain snow cover data pulled from satellites, and the infrastructure running this site.</p>
 
     <div class="elev">
       <div class="elev-caption">Where the decline is showing up, by elevation</div>
@@ -494,11 +495,12 @@ PORTFOLIO_PAGE = """<!doctype html>
       <div class="skill-row"><div class="skill-label">Programming</div><div class="skill-value">Python (pandas, matplotlib), R, JavaScript (Earth Engine scripting)</div></div>
       <div class="skill-row"><div class="skill-label">Statistics</div><div class="skill-value">Mann-Kendall trend test, Sen's slope estimator, correlation analysis</div></div>
       <div class="skill-row"><div class="skill-label">Field methods</div><div class="skill-value">Snow pit excavation, snow water equivalent measurement, avalanche safety certified</div></div>
+      <div class="skill-row"><div class="skill-label">Infrastructure</div><div class="skill-value">Linux administration, cloud VMs (Oracle, Azure), CI/CD (GitHub Actions), SSH/Tailscale networking</div></div>
     </section>
 
     <section id="contact">
       <h2>Get in touch</h2>
-      <p>Open to research assistant roles, field campaigns, and thesis-related collaboration.</p>
+      <p>Open to research assistant roles, field campaigns, thesis-related collaboration, and infrastructure or DevOps work.</p>
       <div class="contact-links">
         <a href="mailto:nabidsheikh06@gmail.com">nabidsheikh06@gmail.com</a>
         <a href="https://linkedin.com/in/nabidsheikh-431164184">linkedin.com/in/nabidsheikh-431164184</a>
