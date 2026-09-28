@@ -7,10 +7,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_READY: ${{ secrets.ORACLE_HOST != '' && secrets.ORACLE_USER != '' && secrets.ORACLE_SSH_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Skip deploy when secrets are missing
+        if: ${{ env.DEPLOY_READY != 'true' }}
+        run: echo "Skipping deploy because ORACLE_HOST, ORACLE_USER, or ORACLE_SSH_KEY is not configured."
+
       - name: Copy app files to server
+        if: ${{ env.DEPLOY_READY == 'true' }}
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.ORACLE_HOST }}
@@ -21,6 +28,7 @@ jobs:
           strip_components: 0
 
       - name: Install deps and restart service
+        if: ${{ env.DEPLOY_READY == 'true' }}
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.ORACLE_HOST }}
