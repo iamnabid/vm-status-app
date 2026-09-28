@@ -1,0 +1,40 @@
+name: Deploy to Oracle VM
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy app files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USER }}
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          source: "app.py,requirements.txt,deploy/*"
+          target: "/home/opc/vm-status-app"
+          strip_components: 0
+
+      - name: Install deps and restart service
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USER }}
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          script: |
+            set -e
+            cd /home/opc/vm-status-app
+            python3 -m venv venv --upgrade-deps 2>/dev/null || python3 -m venv venv
+            ./venv/bin/pip install -q -r requirements.txt
+            sudo cp deploy/vm-status-app.service /etc/systemd/system/vm-status-app.service
+            sudo cp deploy/nginx.conf /etc/nginx/conf.d/vm-status-app.conf
+            sudo systemctl daemon-reload
+            sudo systemctl enable --now vm-status-app
+            sudo systemctl restart vm-status-app
+            sudo systemctl enable --now nginx
+            sudo systemctl restart nginx
