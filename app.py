@@ -451,9 +451,9 @@ PORTFOLIO_PAGE = """<!doctype html>
         <div>Supervised by doc. Ing. Jan Kom&aacute;rek, Ph.D.</div>
         <div>Submission due March 2027</div>
       </div>
-      <p>The thesis tracks snow cover duration across three Czech mountain ranges &mdash; Krkono&scaron;e, &Scaron;umava, and Hrub&yacute; Jesen&iacute;k &mdash; using 24 years of MODIS satellite data (2000&ndash;2024), split into three elevation bands to test whether temperature or precipitation drives snowpack change at different heights.</p>
+      <p>The thesis tracks snow cover duration across three Czech mountain ranges (Krkono&scaron;e, &Scaron;umava, and Hrub&yacute; Jesen&iacute;k), using 24 years of MODIS satellite data (2000&ndash;2024), split into three elevation bands to test whether temperature or precipitation drives snowpack change at different heights.</p>
 
-      <div class="finding"><span class="mark"></span><span>Snow cover duration is declining below 1,200&nbsp;m across all three ranges &mdash; statistically significant in 11 of 18 elevation&ndash;forest categories tested.</span></div>
+      <div class="finding"><span class="mark"></span><span>Snow cover duration is declining below 1,200&nbsp;m across all three ranges, statistically significant in 11 of 18 elevation&ndash;forest categories tested.</span></div>
       <div class="finding"><span class="mark"></span><span>Above 1,200&nbsp;m, no significant trend has turned up yet.</span></div>
       <div class="finding"><span class="mark"></span><span>Temperature tracks the decline more closely than precipitation at every elevation tested, including above 1,200&nbsp;m.</span></div>
       <div class="finding"><span class="mark"></span><span>Cloud cover itself shows no trend over the same period, which rules out satellite cloud obscuration as the cause of the declining signal.</span></div>
