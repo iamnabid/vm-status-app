@@ -259,8 +259,15 @@ PORTFOLIO_PAGE = """<!doctype html>
       font-size: 1.05rem;
       color: var(--ink);
       max-width: 46ch;
+      margin-bottom: 0.9rem;
+    }
+    .now {
+      font-size: 0.88rem;
+      color: var(--dim);
+      max-width: 52ch;
       margin-bottom: 2.2rem;
     }
+    .now strong { color: var(--ink); font-weight: 500; }
 
     .elev {
       background: var(--panel);
@@ -410,31 +417,7 @@ PORTFOLIO_PAGE = """<!doctype html>
     <h1>Nabid Sheikh</h1>
     <div class="role">Environmental engineering student, CZU Prague</div>
     <p class="lede">I dig into how systems behave. Right now that's 24 years of Czech mountain snow cover data pulled from satellites, and the infrastructure running this site.</p>
-
-    <div class="elev">
-      <div class="elev-caption">Where the decline is showing up, by elevation</div>
-      <div class="elev-row">
-        <div class="elev-label">Above 1,200 m</div>
-        <div>
-          <div class="elev-bar"></div>
-          <div class="elev-note">No significant trend detected</div>
-        </div>
-      </div>
-      <div class="elev-row">
-        <div class="elev-label">800&ndash;1,200 m</div>
-        <div>
-          <div class="elev-bar sig"></div>
-          <div class="elev-note">Significant decline (p &lt; 0.05)</div>
-        </div>
-      </div>
-      <div class="elev-row">
-        <div class="elev-label">Below 800 m</div>
-        <div>
-          <div class="elev-bar sig"></div>
-          <div class="elev-note">Significant decline (p &lt; 0.05)</div>
-        </div>
-      </div>
-    </div>
+    <p class="now">Currently: writing my bachelor thesis on Czech mountain snow cover trends, running the cloud infrastructure (Oracle, Azure) behind it and this site, and picking up field methods in snow hydrology along the way.</p>
 
     <section id="about">
       <h2>About</h2>
@@ -452,6 +435,31 @@ PORTFOLIO_PAGE = """<!doctype html>
         <div>Submission due March 2027</div>
       </div>
       <p>The thesis tracks snow cover duration across three Czech mountain ranges (Krkono&scaron;e, &Scaron;umava, and Hrub&yacute; Jesen&iacute;k), using 24 years of MODIS satellite data (2000&ndash;2024), split into three elevation bands to test whether temperature or precipitation drives snowpack change at different heights.</p>
+
+      <div class="elev">
+        <div class="elev-caption">Where the decline is showing up, by elevation</div>
+        <div class="elev-row">
+          <div class="elev-label">Above 1,200 m</div>
+          <div>
+            <div class="elev-bar"></div>
+            <div class="elev-note">No significant trend detected</div>
+          </div>
+        </div>
+        <div class="elev-row">
+          <div class="elev-label">800&ndash;1,200 m</div>
+          <div>
+            <div class="elev-bar sig"></div>
+            <div class="elev-note">Significant decline (p &lt; 0.05)</div>
+          </div>
+        </div>
+        <div class="elev-row">
+          <div class="elev-label">Below 800 m</div>
+          <div>
+            <div class="elev-bar sig"></div>
+            <div class="elev-note">Significant decline (p &lt; 0.05)</div>
+          </div>
+        </div>
+      </div>
 
       <div class="finding"><span class="mark"></span><span>Snow cover duration is declining below 1,200&nbsp;m across all three ranges, statistically significant in 11 of 18 elevation&ndash;forest categories tested.</span></div>
       <div class="finding"><span class="mark"></span><span>Above 1,200&nbsp;m, no significant trend has turned up yet.</span></div>
