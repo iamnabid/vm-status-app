@@ -31,6 +31,7 @@ jobs:
             cd /home/opc/vm-status-app
             python3 -m venv venv --upgrade-deps 2>/dev/null || python3 -m venv venv
             ./venv/bin/pip install -q -r requirements.txt
+            sudo restorecon -R venv/bin
             sudo cp deploy/vm-status-app.service /etc/systemd/system/vm-status-app.service
             sudo cp deploy/nginx.conf /etc/nginx/conf.d/vm-status-app.conf
             sudo systemctl daemon-reload
