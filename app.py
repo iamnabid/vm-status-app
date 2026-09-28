@@ -280,7 +280,7 @@ PORTFOLIO_PAGE = """<!doctype html>
       text-decoration: none;
       padding: 0.55rem 1.1rem;
       border-radius: 3px;
-      margin-bottom: 2.2rem;
+      margin-top: 1.4rem;
       transition: background 0.15s ease;
     }
     .cv-button:hover { background: var(--ink); }
@@ -463,11 +463,6 @@ PORTFOLIO_PAGE = """<!doctype html>
     <p class="lede">I dig into how systems behave. Right now that's 24 years of Czech mountain snow cover data pulled from satellites, and the infrastructure running this site.</p>
     <p class="now">Currently: writing my bachelor thesis on Czech mountain snow cover trends, running the cloud infrastructure (Oracle, Azure) behind it and this site, and picking up field methods in snow hydrology along the way.</p>
 
-    <a class="cv-button" href="/cv" download>
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Download CV (PDF)
-    </a>
-
     <section id="about">
       <h2>About</h2>
       <p>I'm an environmental engineering student at the Czech University of Life Sciences Prague (CZU), currently in my second year. I moved from Dhaka, Bangladesh to Prague in 2024 for the programme, which has covered environmental chemistry, hydrology, GIS, air pollution, ecotoxicology, soil science, and landscape ecology.</p>
@@ -578,6 +573,11 @@ PORTFOLIO_PAGE = """<!doctype html>
         <a href="mailto:nabidsheikh06@gmail.com">nabidsheikh06@gmail.com</a>
         <a href="https://linkedin.com/in/nabidsheikh-431164184">linkedin.com/in/nabidsheikh-431164184</a>
       </div>
+
+      <a class="cv-button" href="/cv" download>
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download CV (PDF)
+      </a>
     </section>
 
     <footer>Rebuilt and redeployed automatically on every push to main.</footer>
