@@ -16,7 +16,7 @@ jobs:
           host: ${{ secrets.ORACLE_HOST }}
           username: ${{ secrets.ORACLE_USER }}
           key: ${{ secrets.ORACLE_SSH_KEY }}
-          source: "app.py,requirements.txt,deploy/*"
+          source: "app.py,requirements.txt,deploy/*,static/*"
           target: "/home/opc/vm-status-app"
           strip_components: 0
 
