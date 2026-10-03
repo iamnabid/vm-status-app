@@ -11,6 +11,16 @@ START_TIME = time.time()
 
 SEGMENTS = 24
 
+ROOT_VARS_CSS = """\
+      --bg: #0d1b1e;
+      --panel: #142b2e;
+      --line: #24393c;
+      --brass: #c7a25a;
+      --brass-dim: #8c7440;
+      --ink: #ede6d6;
+      --dim: #7c9496;
+      --warn: #b0503a;"""
+
 STATUS_PAGE = """<!doctype html>
 <html>
 <head>
@@ -19,16 +29,11 @@ STATUS_PAGE = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <style>
     :root {{
-      --bg: #0d1b1e;
-      --panel: #142b2e;
-      --line: #24393c;
-      --brass: #c7a25a;
-      --brass-dim: #8c7440;
-      --ink: #ede6d6;
-      --dim: #7c9496;
-      --warn: #b0503a;
+__ROOT_VARS__
     }}
     * {{ box-sizing: border-box; }}
     body {{
@@ -192,27 +197,36 @@ STATUS_PAGE = """<!doctype html>
   </div>
 </body>
 </html>
-"""
+""".replace("__ROOT_VARS__", ROOT_VARS_CSS)
+
+PORTFOLIO_DESCRIPTION = (
+    "Environmental engineering student at CZU Prague — remote sensing, "
+    "hydrology, and the cloud infrastructure behind the research."
+)
 
 PORTFOLIO_PAGE = """<!doctype html>
 <html>
 <head>
   <title>Nabid Sheikh</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Environmental engineering student at CZU Prague, studying long-term snow cover trends in Czech mountain ranges.">
+  <meta name="description" content="__PORTFOLIO_DESCRIPTION__">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nabidsheikh.systems/">
+  <meta property="og:title" content="Nabid Sheikh">
+  <meta property="og:description" content="__PORTFOLIO_DESCRIPTION__">
+  <meta property="og:image" content="https://nabidsheikh.systems/static/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nabid Sheikh">
+  <meta name="twitter:description" content="__PORTFOLIO_DESCRIPTION__">
+  <meta name="twitter:image" content="https://nabidsheikh.systems/static/og-image.png">
   <style>
     :root {
-      --bg: #0d1b1e;
-      --panel: #142b2e;
-      --line: #24393c;
-      --brass: #c7a25a;
-      --brass-dim: #8c7440;
-      --ink: #ede6d6;
-      --dim: #7c9496;
-      --warn: #b0503a;
+__ROOT_VARS__
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -427,6 +441,14 @@ PORTFOLIO_PAGE = """<!doctype html>
     .skill-row:last-child { border-bottom: none; }
     .skill-label { color: var(--brass); }
     .skill-value { color: var(--dim); }
+    .skill-group-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--brass-dim);
+      margin: 1.3rem 0 0.4rem;
+    }
+    .skill-group-label:first-of-type { margin-top: 0; }
 
     .contact-links {
       display: flex;
@@ -450,10 +472,10 @@ PORTFOLIO_PAGE = """<!doctype html>
   <div class="shell">
     <nav>
       <a href="#about">About</a>
-      <a href="#thesis">Thesis</a>
-      <a href="#field">Field work</a>
       <a href="#systems">Systems</a>
       <a href="#skills">Skills</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#field">Field work</a>
       <a href="#contact">Contact</a>
       <a href="/status">Live status</a>
     </nav>
@@ -468,6 +490,56 @@ PORTFOLIO_PAGE = """<!doctype html>
       <p>I'm an environmental engineering student at the Czech University of Life Sciences Prague (CZU), currently in my second year. I moved from Dhaka, Bangladesh to Prague in 2024 for the programme, which has covered environmental chemistry, hydrology, GIS, air pollution, ecotoxicology, soil science, and landscape ecology.</p>
       <p>My focus sits at the intersection of remote sensing, hydrology, and GIS: using satellite data to answer questions about how mountain environments are changing. I'm drawn to research with a clear environmental application, not research for its own sake.</p>
       <p>I speak Bangla natively, work comfortably in English, and am building up my Czech.</p>
+    </section>
+
+    <section id="systems">
+      <h2>Systems &amp; infrastructure</h2>
+      <div class="meta-list">
+        <div><strong>This site, end to end</strong></div>
+        <div>Oracle Cloud ARM VM &mdash; provisioned, deployed, and monitored by me</div>
+      </div>
+      <p>Push to main and GitHub Actions ships straight to the server: SSH deploy, dependency install in a fresh virtualenv, systemd restart, nginx reverse proxy, TLS from Let&rsquo;s Encrypt. The same VM reports its own live vitals on the status page linked below.</p>
+
+      <div class="elev">
+        <div class="elev-caption">How this site runs</div>
+        <div class="pipeline">
+          <div class="pipeline-step"><span class="step-label">01</span>git push to main</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">02</span>GitHub Actions checks out the code</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">03</span>Deploys over SSH to an Oracle Cloud ARM VM, installs dependencies in a fresh virtualenv</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">04</span>systemd restarts the app; nginx reverse-proxies it and terminates TLS</div>
+          <div class="pipeline-arrow">&darr;</div>
+          <div class="pipeline-step"><span class="step-label">05</span>Let&rsquo;s Encrypt certificate, auto-renewed by certbot</div>
+        </div>
+      </div>
+
+      <div class="finding"><span class="mark"></span><span>Every push to main redeploys automatically &mdash; no manual server steps.</span></div>
+      <div class="finding"><span class="mark"></span><span>TLS is issued and renewed by Let&rsquo;s Encrypt/certbot; nginx terminates it and reverse-proxies to gunicorn.</span></div>
+      <div class="finding"><span class="mark"></span><span>My own SSH and RDP access to the VM goes over Tailscale &mdash; GitHub&rsquo;s runners deploy straight over the public IP.</span></div>
+
+      <div class="status-line">Built with Flask, gunicorn, nginx, systemd, and GitHub Actions.</div>
+
+      <div class="contact-links">
+        <a href="/status">See the live dashboard</a>
+        <a href="https://github.com/iamnabid/vm-status-app">Source on GitHub</a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p>What's actually in rotation, grouped by where it gets used.</p>
+
+      <div class="skill-group-label">Research &amp; analysis</div>
+      <div class="skill-row"><div class="skill-label">Remote sensing</div><div class="skill-value">Google Earth Engine, MODIS (MOD10A1 / MOD10A2), Sentinel-2, UAV data collection</div></div>
+      <div class="skill-row"><div class="skill-label">GIS</div><div class="skill-value">ArcGIS Pro, QGIS, DEM-based elevation analysis</div></div>
+      <div class="skill-row"><div class="skill-label">Programming</div><div class="skill-value">Python (pandas, matplotlib), R, JavaScript (Earth Engine scripting)</div></div>
+      <div class="skill-row"><div class="skill-label">Statistics</div><div class="skill-value">Mann-Kendall trend test, Sen's slope estimator, correlation analysis</div></div>
+      <div class="skill-row"><div class="skill-label">Field methods</div><div class="skill-value">Snow pit excavation, snow water equivalent measurement, avalanche safety certified</div></div>
+
+      <div class="skill-group-label">Infrastructure</div>
+      <div class="skill-row"><div class="skill-label">Systems</div><div class="skill-value">Linux administration, cloud VMs (Oracle, Azure), CI/CD (GitHub Actions), SSH/Tailscale networking</div></div>
     </section>
 
     <section id="thesis">
@@ -531,41 +603,6 @@ PORTFOLIO_PAGE = """<!doctype html>
       </div>
     </section>
 
-    <section id="systems">
-      <h2>Also on this server</h2>
-      <p>This site's own host, an Oracle Cloud VM, reports its live vitals on a status page I built and deploy automatically through GitHub Actions on every push.</p>
-      <div class="contact-links">
-        <a href="/status">See the live dashboard</a>
-        <a href="https://github.com/iamnabid/vm-status-app">Source on GitHub</a>
-      </div>
-
-      <div class="elev">
-        <div class="elev-caption">How this site runs</div>
-        <div class="pipeline">
-          <div class="pipeline-step"><span class="step-label">01</span>git push to main</div>
-          <div class="pipeline-arrow">&darr;</div>
-          <div class="pipeline-step"><span class="step-label">02</span>GitHub Actions checks out the code</div>
-          <div class="pipeline-arrow">&darr;</div>
-          <div class="pipeline-step"><span class="step-label">03</span>Deploys over SSH to an Oracle Cloud ARM VM, installs dependencies in a fresh virtualenv</div>
-          <div class="pipeline-arrow">&darr;</div>
-          <div class="pipeline-step"><span class="step-label">04</span>systemd restarts the app; nginx reverse-proxies it and terminates TLS</div>
-          <div class="pipeline-arrow">&darr;</div>
-          <div class="pipeline-step"><span class="step-label">05</span>Let&rsquo;s Encrypt certificate, auto-renewed by certbot</div>
-        </div>
-        <div class="pipeline-note">My own SSH and RDP access to the VM goes over Tailscale. GitHub's runners deploy straight over the public IP.</div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Technical skills</h2>
-      <div class="skill-row"><div class="skill-label">Remote sensing</div><div class="skill-value">Google Earth Engine, MODIS (MOD10A1 / MOD10A2), Sentinel-2, UAV data collection</div></div>
-      <div class="skill-row"><div class="skill-label">GIS</div><div class="skill-value">ArcGIS Pro, QGIS, DEM-based elevation analysis</div></div>
-      <div class="skill-row"><div class="skill-label">Programming</div><div class="skill-value">Python (pandas, matplotlib), R, JavaScript (Earth Engine scripting)</div></div>
-      <div class="skill-row"><div class="skill-label">Statistics</div><div class="skill-value">Mann-Kendall trend test, Sen's slope estimator, correlation analysis</div></div>
-      <div class="skill-row"><div class="skill-label">Field methods</div><div class="skill-value">Snow pit excavation, snow water equivalent measurement, avalanche safety certified</div></div>
-      <div class="skill-row"><div class="skill-label">Infrastructure</div><div class="skill-value">Linux administration, cloud VMs (Oracle, Azure), CI/CD (GitHub Actions), SSH/Tailscale networking</div></div>
-    </section>
-
     <section id="contact">
       <h2>Get in touch</h2>
       <p>Open to research assistant roles, field campaigns, thesis-related collaboration, and infrastructure or DevOps work.</p>
@@ -584,7 +621,9 @@ PORTFOLIO_PAGE = """<!doctype html>
   </div>
 </body>
 </html>
-"""
+""".replace("__ROOT_VARS__", ROOT_VARS_CSS).replace(
+    "__PORTFOLIO_DESCRIPTION__", PORTFOLIO_DESCRIPTION
+)
 
 
 def fmt_delta(seconds: float) -> str:
@@ -647,6 +686,18 @@ def cv():
         app.static_folder, "cv.pdf",
         as_attachment=True, download_name="Nabid_Sheikh_CV.pdf",
     )
+
+
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(
+        app.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
+    )
+
+
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory(app.static_folder, "robots.txt", mimetype="text/plain")
 
 
 @app.route("/health")
