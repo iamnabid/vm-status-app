@@ -247,6 +247,7 @@ __ROOT_VARS__
     }
     nav {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1.1rem;
       font-size: 0.82rem;
@@ -257,6 +258,12 @@ __ROOT_VARS__
     }
     nav a { text-decoration: none; color: var(--dim); }
     nav a:hover { color: var(--brass); }
+    nav .brand {
+      margin-right: auto;
+      line-height: 0;
+    }
+    nav .brand svg { display: block; transition: transform 0.25s ease; }
+    nav .brand:hover svg { transform: rotate(10deg); }
 
     h1 {
       font-family: 'IBM Plex Serif', serif;
@@ -471,6 +478,14 @@ __ROOT_VARS__
 <body>
   <div class="shell">
     <nav>
+      <a href="/" class="brand" aria-label="Nabid Sheikh, home">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="var(--panel)" stroke="var(--line)"/>
+          <ellipse cx="16" cy="16" rx="11" ry="5.2" transform="rotate(-28 16 16)" stroke="var(--brass-dim)" stroke-width="1.1"/>
+          <circle cx="16" cy="16" r="3.2" fill="var(--brass)"/>
+          <circle cx="25.1" cy="11.4" r="1.5" fill="var(--brass)"/>
+        </svg>
+      </a>
       <a href="#about">About</a>
       <a href="#systems">Systems</a>
       <a href="#skills">Skills</a>
